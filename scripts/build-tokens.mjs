@@ -59,7 +59,7 @@ function cssValue(type, value) {
 function variableName(group, key) {
   if (group === "color" || group === "space") return `--sparq-${key}`;
   if (group === "font") return `--sparq-font-${key}`;
-  if (group === "typography") return `--sparq-${key}`;
+  if (group === "typography" || group === "effect") return `--sparq-${key}`;
   if (group === "motion" && key === "ease") return "--sparq-ease";
   if (group === "motion" && key === "duration") return "--sparq-dur";
   throw new Error(`No CSS name for ${group}.${key}`);
@@ -132,7 +132,7 @@ ${declarations.join("\n")}
   font-weight: 500;
   letter-spacing: var(--sparq-track-label);
   text-transform: uppercase;
-  color: var(--sparq-ink-muted);
+  color: var(--sparq-ink-bright);
 }
 
 .sparq-prose {

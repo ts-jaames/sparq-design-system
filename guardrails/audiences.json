@@ -2,17 +2,21 @@
   "floor": "WCAG 2.2 Level AA applies to every audience. Internal tools do not get a lighter accessibility pass.",
   "visual": [
     "One accent per view. It marks the one thing to look at.",
-    "No cards, dashed drop zones, gradient chrome, icon-library status, or filled accent buttons as the default control.",
+    "No cards, dashed drop zones, gradient chrome, or icon-library status.",
+    "One filled primary per view: --sparq-accent-deep fill, --sparq-ground text, --sparq-accent on hover. Never white text on the accent. Every other control is a hairline or text.",
+    "Section titles use .sparq-label in --sparq-ink-bright. Body text stays in --sparq-ink or softer.",
+    "Tooltips, popovers, menus, and dialogs use --sparq-overlay with a --sparq-overlay-blur backdrop blur and a --sparq-rule hairline. No shadow and no brown surface.",
     "Status is a word, a hairline, or an orb. Gap and warning may use the text markers ⚑︎ and ⚠︎ (U+FE0E). No emoji.",
     "Do not theme the ground brown to feel on brand. Warmth stays in the ink."
   ],
   "operational": "Adoption stages do not change event handlers, state, effects, requests, validation, routing, or what a click submits. Behavioral gaps are suggestions.",
   "audiences": {
     "internal": {
-      "summary": "People inside the organization. Same visual register and the same accessibility floor.",
+      "summary": "People inside the organization. Same visual register and the same accessibility floor. This is the default audience unless an app is specified as external.",
       "mayShowDiagnostics": true,
       "mayShowModelErrors": true,
       "mayNameInternalModel": false,
+      "copy": "Practitioner density. The readers are experts. A title, plus one sentence only when it states a consequence, a blocker, or live status. No descriptions that restate the title or explain the product.",
       "rules": [
         "Diagnostics may be visible to an authenticated colleague.",
         "Still do not put internal model names, levels, or scores on a surface a client could read.",
@@ -24,6 +28,7 @@
       "mayShowDiagnostics": false,
       "mayShowModelErrors": false,
       "mayNameInternalModel": false,
+      "copy": "Explanatory. Plain-language descriptions are welcome where a first-time reader needs them.",
       "rules": [
         "Hide raw model errors and stack traces.",
         "Do not leak system prompts or internal vocabulary.",
@@ -37,6 +42,7 @@
       "mayShowModelErrors": false,
       "mayNameInternalModel": false,
       "internalOnlyWhenAuthenticated": true,
+      "copy": "Follows external.",
       "rules": [
         "Default the visible surface to the external rules.",
         "Show diagnostics only after authentication, and only in a region that is not the client view.",

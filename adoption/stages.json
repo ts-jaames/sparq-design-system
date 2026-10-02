@@ -53,7 +53,7 @@
       "id": "accent",
       "title": "Accent",
       "apply": [
-        "On that same surface, restyle filled accent chrome as an accent hairline or text treatment.",
+        "On that same surface, the view's one primary action uses the filled primary: --sparq-accent-deep fill and --sparq-ground text. Restyle any other filled accent chrome as an accent hairline or text treatment.",
         "Remove dashed borders.",
         "The control stays the same control."
       ],

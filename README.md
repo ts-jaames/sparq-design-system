@@ -2,7 +2,7 @@
 
 A framework-agnostic spec for Sparq apps: CSS custom properties, semantic blueprints, WCAG 2.2 AA, and an MCP server that Claude Code and Cursor can query.
 
-The visual register is a near-black ground, warm off-white ink, one accent, and hairlines. IBM Plex Sans carries prose. IBM Plex Mono carries labels, stamps, and numbers. Cards, dashed drop zones, and filled accent buttons are not part of the system.
+The visual register is a near-black ground, warm off-white ink, one accent, and hairlines. IBM Plex Sans carries prose. IBM Plex Mono carries labels, stamps, and numbers. Cards and dashed drop zones are not part of the system. A view has at most one filled primary button; every other control is a hairline or text.
 
 Linking the stylesheet does not restyle an existing app. It only declares variables and classes.
 

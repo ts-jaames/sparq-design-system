@@ -16,6 +16,7 @@ You are an AI coding assistant in a consumer app. Sparq is the visual and access
 
 - No top bar. The page title appears once, as the page's `h1`, in the Sparq title treatment: regular weight with `--sparq-title-tracking`.
 - Navigation sits on the ground. No box, border, or fill around it. Nav items are text only, with no icons.
+- The nav is a single flat list with no group labels. Role-gated items join the end of the same list.
 - Mono is always uppercase. Use it only for labels (`.sparq-label`) and figures (`.sparq-figure`). Anything that reads as a sentence or a name uses Plex Sans.
 - Section titles inside a page use `.sparq-label`. They read as footnotes, not headings. Keep the heading element so the outline does not change.
 - Hairline or space:
@@ -23,6 +24,34 @@ You are an AI coding assistant in a consumer app. Sparq is the visual and access
   - A hairline separates repeated items of the same kind, such as list rows, table rows, and log entries.
   - A hairline always has at least `--sparq-s2` of space on each side.
 - Hover and selected: text moves to `--sparq-ink`. Any fill uses `--sparq-raise`, never a tinted or brown surface. Selected also takes `.sparq-mark`, so state is never color alone.
+
+## Text roles
+
+- Section titles: `.sparq-label`, which is `--sparq-ink-bright` (pure white).
+- Body text, descriptions, and values: `--sparq-ink` (off-white).
+- Secondary text steps down through `--sparq-ink-soft`, `--sparq-ink-muted`, and `--sparq-ink-faint`. Nothing goes below faint.
+- Pure white is for section titles only. Do not use it for body text or emphasis.
+
+## Copy density
+
+Apps are internal unless specified as external. Internal readers are practitioners and experts, so write for them.
+
+- A section gets a title. Add one sentence only when it states a consequence (irreversible, or leaves a gap), a blocker (why a control is disabled), or live status.
+- Do not add a description that restates the title, explains the product, or says what happens next.
+- Merge a question-style heading and its explanation into one short title. "How should the tool start?" plus "Add documents or start an interview" becomes "Start from".
+- External and hybrid apps follow `copy` in `sparq_get_guardrails` and keep plain-language explanations.
+
+## Controls
+
+- One filled primary per view: `--sparq-accent-deep` fill, `--sparq-ground` text, `--sparq-accent` fill on hover. It is slim: about 4px of vertical padding at the small size and 6px at the default size.
+- Never put white text on the accent. It is under 4.5:1.
+- Every other control is a hairline (`--sparq-rule-strong`) or text.
+
+## Overlays
+
+- Tooltips, popovers, menus, and dialogs use `--sparq-overlay`, a shade darker than the ground, with `backdrop-filter: blur(var(--sparq-overlay-blur))`.
+- Edge them with a `--sparq-rule` hairline. No shadow and no brown surface.
+- Item hover inside an overlay uses `--sparq-raise`.
 
 ## Stylesheet
 

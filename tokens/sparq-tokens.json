@@ -14,6 +14,12 @@
       "group": "color",
       "description": "Primary text. Warmth lives here, not in the background."
     },
+    "--sparq-ink-bright": {
+      "value": "#FFFFFF",
+      "type": "color",
+      "group": "color",
+      "description": "Section titles only. Body text stays in ink."
+    },
     "--sparq-ink-soft": {
       "value": "#C4BEB4",
       "type": "color",
@@ -73,6 +79,18 @@
       "type": "color",
       "group": "color",
       "description": "Neutral lift off the ground for hover and selected rows. Never a tinted or brown surface, and never a card."
+    },
+    "--sparq-overlay": {
+      "value": "rgba(14, 14, 14, 0.88)",
+      "type": "color",
+      "group": "color",
+      "description": "Tooltips, popovers, menus, and dialogs. A shade darker than the ground, near-opaque, over a backdrop blur. Never brown."
+    },
+    "--sparq-overlay-blur": {
+      "value": "8px",
+      "type": "dimension",
+      "group": "effect",
+      "description": "Backdrop blur behind --sparq-overlay."
     },
     "--sparq-s1": {
       "value": "8px",
@@ -243,6 +261,46 @@
       "allowed": true,
       "role": "text",
       "note": null
+    },
+    {
+      "id": "ink-bright-on-ground",
+      "foreground": "#FFFFFF",
+      "background": "#1A1A1A",
+      "ratio": 17.4,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": null
+    },
+    {
+      "id": "ground-on-accent-deep",
+      "foreground": "#1A1A1A",
+      "background": "#F07A62",
+      "ratio": 6.35,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": "The filled primary at rest."
+    },
+    {
+      "id": "ground-on-accent",
+      "foreground": "#1A1A1A",
+      "background": "#E75437",
+      "ratio": 4.74,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": "The filled primary on hover."
+    },
+    {
+      "id": "white-on-accent",
+      "foreground": "#FFFFFF",
+      "background": "#E75437",
+      "ratio": 3.67,
+      "minRatio": 4.5,
+      "allowed": false,
+      "role": "text",
+      "note": "Disallowed. White text on the accent fill is under 4.5:1. The filled primary uses ground text."
     },
     {
       "id": "accent-hairline-on-ground",

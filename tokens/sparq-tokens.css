@@ -6,6 +6,7 @@
 :root {
   --sparq-ground: #1A1A1A;
   --sparq-ink: #EDEAE4;
+  --sparq-ink-bright: #FFFFFF;
   --sparq-ink-soft: #C4BEB4;
   --sparq-ink-muted: #A8A39A;
   --sparq-ink-faint: #949089;
@@ -16,6 +17,8 @@
   --sparq-accent-soft: rgba(231, 84, 55, 0.18);
   --sparq-accent-wash: rgba(231, 84, 55, 0.10);
   --sparq-raise: rgba(237, 234, 228, 0.05);
+  --sparq-overlay: rgba(14, 14, 14, 0.88);
+  --sparq-overlay-blur: 8px;
   --sparq-s1: 8px;
   --sparq-s2: 16px;
   --sparq-s3: 24px;
@@ -49,7 +52,7 @@
   font-weight: 500;
   letter-spacing: var(--sparq-track-label);
   text-transform: uppercase;
-  color: var(--sparq-ink-muted);
+  color: var(--sparq-ink-bright);
 }
 
 .sparq-prose {

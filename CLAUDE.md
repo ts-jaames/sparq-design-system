@@ -6,7 +6,7 @@ Tokens in `tokens/tokens.json` are the source of truth. Run `npm run build:token
 
 ## Register
 
-Near-black ground, warm ink, one accent, hairlines, IBM Plex Sans for prose and IBM Plex Mono for labels and numbers. No cards, dashed zones, elevation shadows, or filled accent buttons as the default control.
+Near-black ground, warm ink, one accent, hairlines, IBM Plex Sans for prose and IBM Plex Mono for labels and numbers. No cards, dashed zones, or elevation shadows. One filled primary per view; every other control is a hairline or text.
 
 `tokens/sparq-tokens.css` declares variables and opt-in classes only. Linking it must not restyle a consumer app.
 
