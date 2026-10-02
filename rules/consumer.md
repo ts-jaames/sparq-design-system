@@ -17,6 +17,11 @@ You are an AI coding assistant in a consumer app. Sparq is the visual and access
 - No top bar. The page title appears once, as the page's `h1`, in the Sparq title treatment: regular weight with `--sparq-title-tracking`.
 - Navigation sits on the ground. No box, border, or fill around it. Nav items are text only, with no icons.
 - The nav is a single flat list with no group labels. Role-gated items join the end of the same list.
+- Content area:
+  - Content is left-aligned against the nav. Do not centre the page with auto margins.
+  - Every page uses the same maximum content width, so the left and right edges don't move between pages. Content does not have to fill the window.
+  - A right rail, when a page needs one, sits to the right of the content block in the remaining space. Adding it never moves the content's left edge.
+  - Full-bleed tool layouts, such as a multi-pane workspace, are exempt.
 - Mono is always uppercase. Use it only for labels (`.sparq-label`) and figures (`.sparq-figure`). Anything that reads as a sentence or a name uses Plex Sans.
 - Section titles inside a page use `.sparq-label`. They read as footnotes, not headings. Keep the heading element so the outline does not change.
 - Hairline or space:

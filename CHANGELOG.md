@@ -9,6 +9,7 @@
 - One filled primary per view is now allowed: `--sparq-accent-deep` fill with `--sparq-ground` text. New contrast pairs record it, and record white on the accent as disallowed.
 - Copy density: internal is the default audience and gets practitioner copy. Each audience in the guardrails now has a `copy` rule.
 - The nav is a single flat list with no group labels.
+- Content area: left-aligned against the nav at one shared maximum width, never centred. A right rail sits beside the content without moving its left edge. Full-bleed tool layouts are exempt.
 
 ## 0.1.0 — 2 Oct 2026
 
