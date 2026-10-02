@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "sparq-design-system": {
-      "command": "node",
-      "args": ["ABSOLUTE_PATH_TO/sparq-design-system/mcp-server/dist/index.js"]
+      "command": "npx",
+      "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.1.0"]
     }
   }
 }

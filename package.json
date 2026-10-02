@@ -1,10 +1,46 @@
 {
   "name": "sparq-design-system",
-  "private": true,
+  "version": "0.1.0",
+  "description": "Sparq Design System: tokens, blueprints, accessibility floor, and an MCP server for agents.",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ts-jaames/sparq-design-system.git"
+  },
+  "bin": {
+    "sparq-design-system": "mcp-server/dist/index.js"
+  },
+  "files": [
+    "mcp-server/dist/",
+    "mcp-server/src/",
+    "mcp-server/tsconfig.json",
+    "tokens/",
+    "blueprints/",
+    "guardrails/",
+    "a11y/",
+    "adoption/",
+    "motion/",
+    "rules/",
+    "templates/",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build:tokens": "node scripts/build-tokens.mjs",
-    "build": "npm run build:tokens && npm run build --prefix mcp-server",
-    "test": "npm run build:tokens && npm test --prefix mcp-server"
+    "build:server": "tsc -p mcp-server",
+    "build": "npm run build:tokens && npm run build:server",
+    "prepare": "tsc -p mcp-server",
+    "test": "npm run build && node --test \"mcp-server/dist/**/*.test.js\""
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.0"
   }
 }

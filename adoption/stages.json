@@ -14,8 +14,8 @@
       "id": "connect",
       "title": "Connect",
       "apply": [
-        "Link tokens/sparq-tokens.css.",
-        "Add the Sparq MCP server and the consumer agent rules.",
+        "Link cssUrl and fontsUrl from sparq_get_tokens. Do not copy the stylesheet into the app.",
+        "Add the Sparq MCP server and copy templates/consumer/AGENTS.md to the app root.",
         "Do not point existing styles at the new variables yet."
       ],
       "suggest": [

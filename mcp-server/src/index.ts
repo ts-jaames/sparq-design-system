@@ -11,10 +11,11 @@ import {
   normalizeFramework,
   renderSpec,
 } from "./spec.js";
+import { cssUrl, fontsUrl, packageVersion, versionInfo } from "./version.js";
 
 const server = new McpServer({
   name: "sparq-design-system",
-  version: "1.0.0",
+  version: packageVersion(),
 });
 
 function text(value: unknown) {
@@ -29,16 +30,43 @@ function text(value: unknown) {
 }
 
 server.registerTool(
+  "sparq_get_rules",
+  {
+    description:
+      "Fetch the current Sparq rules for a consumer app. Call this before any UI work.",
+    inputSchema: {},
+  },
+  async () => text(readText("rules", "consumer.md")),
+);
+
+server.registerTool(
+  "sparq_get_version",
+  {
+    description:
+      "Fetch the Sparq version, the pinned stylesheet URL, the font URL, and the changelog.",
+    inputSchema: {},
+  },
+  async () => text(versionInfo()),
+);
+
+server.registerTool(
   "sparq_get_tokens",
   {
     description:
-      "Fetch Sparq CSS custom properties, contrast pairs, surface classes, and text markers.",
+      "Fetch the Sparq stylesheet URL, CSS custom properties, contrast pairs, surface classes, and text markers.",
     inputSchema: {},
   },
   async () => {
     const flat = readJson<Record<string, unknown>>("tokens", "sparq-tokens.json");
     const css = readText("tokens", "sparq-tokens.css");
-    return text({ ...flat, css });
+    return text({
+      version: packageVersion(),
+      cssUrl: cssUrl(),
+      fontsUrl,
+      link: "Link cssUrl and fontsUrl. Do not copy the stylesheet into the app.",
+      ...flat,
+      css,
+    });
   },
 );
 
