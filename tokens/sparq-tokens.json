@@ -68,6 +68,12 @@
       "group": "color",
       "description": "Quieter accent wash."
     },
+    "--sparq-raise": {
+      "value": "rgba(237, 234, 228, 0.05)",
+      "type": "color",
+      "group": "color",
+      "description": "Neutral lift off the ground for hover and selected rows. Never a tinted or brown surface, and never a card."
+    },
     "--sparq-s1": {
       "value": "8px",
       "type": "dimension",
