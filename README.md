@@ -21,7 +21,7 @@ Nothing to clone. Add the server to the app's `.cursor/mcp.json` (Cursor) or `.m
 }
 ```
 
-The first start downloads and builds the server, which takes a minute. Later starts use the cache.
+The first start downloads and builds the server, which takes several seconds. Later starts use the cache.
 
 Copy [`templates/consumer/AGENTS.md`](templates/consumer/AGENTS.md) to the app root, and [`templates/consumer/CLAUDE.md`](templates/consumer/CLAUDE.md) if you use Claude Code. That file is a pointer. The full rules come from `sparq_get_rules`, so they stay current without editing the app.
 
