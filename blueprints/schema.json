@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sparq.design/blueprint.schema.json",
+  "title": "Sparq blueprint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "purpose",
+    "aria",
+    "structure",
+    "tokenRoles",
+    "behavioralRules",
+    "adoption"
+  ],
+  "properties": {
+    "name": { "type": "string" },
+    "purpose": { "type": "string" },
+    "aria": { "type": "object" },
+    "structure": { "$ref": "#/$defs/node" },
+    "tokenRoles": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "behavioralRules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "legalOrbStates": {
+      "type": "array",
+      "items": {
+        "enum": ["working", "listening", "searching", "breathing"]
+      }
+    },
+    "adoption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["apply", "suggest"],
+      "properties": {
+        "apply": { "type": "string" },
+        "suggest": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["element"],
+      "properties": {
+        "element": { "type": "string" },
+        "className": { "type": "string" },
+        "text": { "type": "string" },
+        "attrs": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node" }
+        }
+      }
+    }
+  }
+}

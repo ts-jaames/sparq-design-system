@@ -1,0 +1,54 @@
+{
+  "name": "AutoFix",
+  "purpose": "One hairline row for an automatic retry the product already performs. Not a banner. Not a new retry machine.",
+  "aria": {
+    "role": "status",
+    "aria-live": "polite"
+  },
+  "structure": {
+    "element": "div",
+    "className": "sparq-rule",
+    "attrs": { "role": "status" },
+    "children": [
+      {
+        "element": "canvas",
+        "attrs": {
+          "data-orb": "working",
+          "data-orb-size": "20",
+          "aria-hidden": "true"
+        }
+      },
+      {
+        "element": "p",
+        "className": "sparq-label",
+        "text": "Working"
+      },
+      {
+        "element": "p",
+        "className": "sparq-prose",
+        "text": "One sentence about what is already happening."
+      },
+      {
+        "element": "button",
+        "className": "sparq-hit sparq-focus",
+        "attrs": { "type": "button" },
+        "text": "Retry"
+      }
+    ]
+  },
+  "tokenRoles": ["color.ink", "color.ink-muted", "color.accent", "color.rule"],
+  "legalOrbStates": ["working"],
+  "behavioralRules": [
+    "The row describes work the product already does. It does not invent a retry bound or a new status.",
+    "The orb is presentational. The word Working is the accessible name.",
+    "On a new build, the state word is in a polite live region, retries are bounded, and focus stays put unless the person invoked the retry.",
+    "Do not use a graphic emoji or a spinner library for this status."
+  ],
+  "adoption": {
+    "apply": "If the screen already shows a status word for this work, place a presentational working orb beside that word and restyle the row as a hairline. Keep the existing retry control and its handler.",
+    "suggest": [
+      "A retry limit, a polite live region, and holding focus unless the person invoked retry are behavior. Suggest them. Do not add state or change the handler during a visual stage.",
+      "If the screen has no status word yet, do not add an orb. Record that as a suggestion."
+    ]
+  }
+}

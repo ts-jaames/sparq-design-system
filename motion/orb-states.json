@@ -1,0 +1,33 @@
+{
+  "engine": "thinking-orbs",
+  "version": "0.3.1",
+  "license": "MIT",
+  "source": "https://github.com/Jakubantalik/thinking-orbs",
+  "mount": "motion/orbs.js",
+  "sizes": [20, 64],
+  "rules": [
+    "Orbs denote AI movement only, beside a word. Never as decoration and never as a spinner library.",
+    "The canvas is presentational and aria-hidden. The adjacent word is the accessible name.",
+    "prefers-reduced-motion paints one still frame. The animation can be paused.",
+    "Confidence is a coarse word plus an orb, never a percent.",
+    "On an existing app, add an orb only beside a status word the screen already renders. Do not invent status or bind new state."
+  ],
+  "states": {
+    "working": {
+      "preset": "orbits",
+      "meaning": "Task in progress."
+    },
+    "listening": {
+      "preset": "wave",
+      "meaning": "Waiting on a person."
+    },
+    "searching": {
+      "preset": "globe",
+      "meaning": "Reading source material."
+    },
+    "breathing": {
+      "preset": "ring",
+      "meaning": "Idle. The system is at rest."
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "target": "WCAG 2.2 Level AA",
+  "appliesTo": ["internal", "external", "hybrid"],
+  "notTheClaim": "WCAG 3 is a Working Draft and is not the conformance target. APCA is a readability note, not a replacement for the 4.5:1 test.",
+  "reference": "https://www.w3.org/TR/WCAG22/",
+  "criteriaInScope": [
+    { "id": "1.4.3", "name": "Contrast (Minimum)", "level": "AA" },
+    { "id": "1.4.11", "name": "Non-text Contrast", "level": "AA" },
+    { "id": "1.4.1", "name": "Use of Color", "level": "A" },
+    { "id": "2.1.1", "name": "Keyboard", "level": "A" },
+    { "id": "2.1.2", "name": "No Keyboard Trap", "level": "A" },
+    { "id": "2.4.3", "name": "Focus Order", "level": "A" },
+    { "id": "2.4.7", "name": "Focus Visible", "level": "AA" },
+    { "id": "2.4.11", "name": "Focus Not Obscured (Minimum)", "level": "AA" },
+    { "id": "2.5.7", "name": "Dragging Movements", "level": "AA" },
+    { "id": "2.5.8", "name": "Target Size (Minimum)", "level": "AA" },
+    { "id": "2.2.2", "name": "Pause, Stop, Hide", "level": "A" },
+    { "id": "3.2.6", "name": "Consistent Help", "level": "A" },
+    { "id": "3.3.7", "name": "Redundant Entry", "level": "A" },
+    { "id": "3.3.8", "name": "Accessible Authentication (Minimum)", "level": "AA" },
+    { "id": "4.1.2", "name": "Name, Role, Value", "level": "A" }
+  ],
+  "color": {
+    "textMinimum": 4.5,
+    "nonTextMinimum": 3,
+    "faintInkIsTheFloor": true,
+    "disallowedPairs": ["accent-on-ink"],
+    "rules": [
+      "Text uses approved pairs from tokens/sparq-tokens.json contrast.",
+      "Accent text sits on the ground, not on the off-white ink.",
+      "State is never color alone. An accent hairline sits next to a word or aria-current.",
+      "Focus ring and the active hairline need 3:1 against the adjacent ground."
+    ]
+  },
+  "keyboard": {
+    "rules": [
+      "Tab order follows the visual order.",
+      "On a new build, a composite such as the section rail keeps one tab stop and uses arrow keys inside.",
+      "On an existing app, rebuilding tab order is a suggestion, not an adoption edit.",
+      "Focus is a 2px accent outline, offset so it stays visible, and is not covered by a sticky column.",
+      "There is no keyboard trap.",
+      "A skip link is required when a view has more than one landmark.",
+      "Hit areas are at least 24 by 24 CSS pixels, using min-size or padding when the visible label is smaller."
+    ]
+  },
+  "motion": {
+    "rules": [
+      "prefers-reduced-motion jumps arrivals to the end state and paints orbs as one still frame.",
+      "Orbs can be paused.",
+      "prefers-contrast: more and forced-colors keep hairlines and focus visible.",
+      "An orb is never the only status."
+    ]
+  },
+  "ai": {
+    "rules": [
+      "On a new build, streaming or regenerated copy uses aria-live polite.",
+      "Errors that block the next step use assertive once, not on every token.",
+      "Focus does not jump to a region that updated itself.",
+      "Orbs and other canvases are aria-hidden. The text state is the name.",
+      "A percent, a color ramp, or motion alone is never the confidence signal.",
+      "On an existing app, adding a live region or changing when focus moves is a suggestion."
+    ]
+  },
+  "apca": {
+    "role": "readability note for small mono on a dark ground",
+    "replacesWcag": false
+  }
+}

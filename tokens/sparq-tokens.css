@@ -1,0 +1,154 @@
+/* Generated from tokens/tokens.json. Do not edit by hand.
+   Declares variables and opt-in classes only.
+   Linking this file does not restyle an existing app.
+*/
+
+:root {
+  --sparq-ground: #1A1A1A;
+  --sparq-ink: #EDEAE4;
+  --sparq-ink-soft: #C4BEB4;
+  --sparq-ink-muted: #A8A39A;
+  --sparq-ink-faint: #949089;
+  --sparq-rule: rgba(237, 234, 228, 0.12);
+  --sparq-rule-strong: rgba(237, 234, 228, 0.22);
+  --sparq-accent: #E75437;
+  --sparq-accent-deep: #F07A62;
+  --sparq-accent-soft: rgba(231, 84, 55, 0.18);
+  --sparq-accent-wash: rgba(231, 84, 55, 0.10);
+  --sparq-s1: 8px;
+  --sparq-s2: 16px;
+  --sparq-s3: 24px;
+  --sparq-s4: 32px;
+  --sparq-s5: 40px;
+  --sparq-s6: 48px;
+  --sparq-s8: 64px;
+  --sparq-s10: 80px;
+  --sparq-font-sans: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --sparq-font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --sparq-track-label: 0.08em;
+  --sparq-measure: 62ch;
+  --sparq-title-tracking: -0.015em;
+  --sparq-focus-width: 2px;
+  --sparq-focus-offset: 3px;
+  --sparq-hit-min: 24px;
+  --sparq-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --sparq-dur: 280ms;
+}
+
+.sparq-rule {
+  border: 0;
+  border-top: 1px solid var(--sparq-rule);
+  height: 0;
+  margin: 0;
+}
+
+.sparq-label {
+  font-family: var(--sparq-font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--sparq-track-label);
+  text-transform: uppercase;
+  color: var(--sparq-ink-muted);
+}
+
+.sparq-prose {
+  font-family: var(--sparq-font-sans);
+  font-weight: 400;
+  letter-spacing: var(--sparq-title-tracking);
+  line-height: 1.55;
+  max-width: var(--sparq-measure);
+  color: var(--sparq-ink);
+}
+
+.sparq-figure {
+  font-family: var(--sparq-font-mono);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  color: var(--sparq-ink);
+}
+
+.sparq-mark {
+  border-left: 1px solid var(--sparq-accent);
+  padding-left: 9px;
+}
+
+.sparq-hit {
+  min-width: var(--sparq-hit-min);
+  min-height: var(--sparq-hit-min);
+}
+
+.sparq-focus:focus {
+  outline: none;
+}
+
+.sparq-focus:focus-visible {
+  outline: var(--sparq-focus-width) solid var(--sparq-accent);
+  outline-offset: var(--sparq-focus-offset);
+}
+
+.sparq-arrive {
+  position: relative;
+}
+
+.sparq-arrive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--sparq-accent);
+  transform-origin: left;
+  animation: sparq-stamp-arrive var(--sparq-dur) var(--sparq-ease) forwards;
+}
+
+@keyframes sparq-stamp-arrive {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sparq-dur: 1ms;
+  }
+
+  .sparq-arrive::after {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --sparq-rule: rgba(237, 234, 228, 0.55);
+    --sparq-rule-strong: rgba(237, 234, 228, 0.8);
+  }
+}
+
+@media (forced-colors: active) {
+  .sparq-rule {
+    border-top-color: CanvasText;
+  }
+
+  .sparq-mark {
+    border-left-color: Highlight;
+  }
+
+  .sparq-focus:focus-visible {
+    outline-color: Highlight;
+  }
+
+  .sparq-prose,
+  .sparq-figure,
+  .sparq-label {
+    color: CanvasText;
+  }
+}

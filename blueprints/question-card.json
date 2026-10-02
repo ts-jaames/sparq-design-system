@@ -1,0 +1,67 @@
+{
+  "name": "QuestionCard",
+  "purpose": "A gated human-in-the-loop question during an intake workflow. On an existing app this is a visual spec. Behavior below is implemented only when the pattern is newly built.",
+  "aria": {
+    "role": "region",
+    "aria-live": "polite"
+  },
+  "structure": {
+    "element": "section",
+    "className": "sparq-prose",
+    "attrs": {
+      "aria-labelledby": "sparq-question-title",
+      "aria-live": "polite"
+    },
+    "children": [
+      {
+        "element": "h2",
+        "className": "sparq-prose",
+        "attrs": { "id": "sparq-question-title" },
+        "text": "Question"
+      },
+      {
+        "element": "div",
+        "attrs": {
+          "role": "group",
+          "aria-label": "Suggested answers"
+        },
+        "children": [
+          {
+            "element": "button",
+            "className": "sparq-hit sparq-focus sparq-mark",
+            "attrs": { "type": "button", "aria-pressed": "true" },
+            "text": "Suggested answer"
+          },
+          {
+            "element": "button",
+            "className": "sparq-hit sparq-focus",
+            "attrs": { "type": "button", "aria-pressed": "false" },
+            "text": "Another answer"
+          }
+        ]
+      },
+      {
+        "element": "button",
+        "className": "sparq-label sparq-hit sparq-focus",
+        "attrs": { "type": "button" },
+        "text": "Leave as gap"
+      }
+    ]
+  },
+  "tokenRoles": ["color.ground", "color.ink", "color.ink-muted", "color.accent"],
+  "legalOrbStates": [],
+  "behavioralRules": [
+    "Never render an open-ended input without preset suggested options if suggestions exist.",
+    "Leave as gap emits isGap: true rather than submitting empty text.",
+    "A new question announces through aria-live polite and does not move focus.",
+    "The active suggestion uses sparq-mark and aria-pressed. State is never color alone.",
+    "Suggested answers are real buttons with a 24px minimum hit area."
+  ],
+  "adoption": {
+    "apply": "Restyle the existing question with Sparq type, a hairline, and a visible focus style. Keep the same controls and the same handlers.",
+    "suggest": [
+      "If leaving a gap currently submits empty text, a later change can emit isGap: true. Do not make that change during a visual stage.",
+      "Announcing a new question in a polite live region, without moving focus, is behavior. Suggest it. Do not add it during a visual stage unless the region already announces."
+    ]
+  }
+}

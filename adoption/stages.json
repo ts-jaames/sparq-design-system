@@ -1,0 +1,83 @@
+{
+  "rule": "One stage, one surface, one turn, presentation only.",
+  "doesNotChange": [
+    "event handlers",
+    "state",
+    "effects",
+    "requests",
+    "validation",
+    "routing",
+    "what a click submits"
+  ],
+  "stages": [
+    {
+      "id": "connect",
+      "title": "Connect",
+      "apply": [
+        "Link tokens/sparq-tokens.css.",
+        "Add the Sparq MCP server and the consumer agent rules.",
+        "Do not point existing styles at the new variables yet."
+      ],
+      "suggest": [
+        "Confirm the screenshot matches the app from before the link. If it does not, the stylesheet is doing more than declaring variables."
+      ]
+    },
+    {
+      "id": "ground-ink",
+      "title": "Ground and ink",
+      "apply": [
+        "On the named files, set background and text colors to Sparq variables.",
+        "Leave cards, radii, buttons, and copy as they are."
+      ],
+      "suggest": []
+    },
+    {
+      "id": "type",
+      "title": "Type",
+      "apply": [
+        "Swap font families to the Sparq sans and mono stacks.",
+        "Leave layout alone."
+      ],
+      "suggest": []
+    },
+    {
+      "id": "seams",
+      "title": "Seams",
+      "apply": [
+        "On the one named surface, replace a card border with a 1px hairline.",
+        "Keep the same elements. Leave sibling screens alone."
+      ],
+      "suggest": []
+    },
+    {
+      "id": "accent",
+      "title": "Accent",
+      "apply": [
+        "On that same surface, restyle filled accent chrome as an accent hairline or text treatment.",
+        "Remove dashed borders.",
+        "The control stays the same control."
+      ],
+      "suggest": []
+    },
+    {
+      "id": "focus",
+      "title": "Focus",
+      "apply": [
+        "Add a visible focus style and a 24px hit area, using padding or min-size, on that surface."
+      ],
+      "suggest": [
+        "Rebuilding tab order, roving tabindex, or live regions is behavior. Do not code it in this stage."
+      ]
+    },
+    {
+      "id": "ai-movement",
+      "title": "AI movement",
+      "apply": [
+        "If a status word is already rendered, place a presentational orb beside it and hide the canvas from assistive tech."
+      ],
+      "suggest": [
+        "Do not invent a status, bind the orb to new state, or change when work starts and stops."
+      ]
+    }
+  ]
+}

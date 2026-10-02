@@ -1,0 +1,39 @@
+{
+  "name": "SectionRail",
+  "purpose": "A plain list of sections. The current one is a left accent hairline plus aria-current, not a filled pill.",
+  "aria": {
+    "role": "navigation",
+    "aria-label": "Sections"
+  },
+  "structure": {
+    "element": "nav",
+    "attrs": { "aria-label": "Sections" },
+    "children": [
+      {
+        "element": "a",
+        "className": "sparq-prose sparq-mark sparq-hit sparq-focus",
+        "attrs": { "href": "#current", "aria-current": "true" },
+        "text": "Current section"
+      },
+      {
+        "element": "a",
+        "className": "sparq-prose sparq-hit sparq-focus",
+        "attrs": { "href": "#next" },
+        "text": "Next section"
+      }
+    ]
+  },
+  "tokenRoles": ["color.ink", "color.ink-soft", "color.accent", "color.ground"],
+  "legalOrbStates": [],
+  "behavioralRules": [
+    "The current section is a left accent hairline and aria-current true. No numbered chips and no filled nav pill.",
+    "On a new build, arrow keys move inside the rail and Tab leaves it.",
+    "Do not convey the current section by color alone."
+  ],
+  "adoption": {
+    "apply": "On the named rail, replace a filled selection pill with sparq-mark and set aria-current on the item that is already current. Do not change where the links go.",
+    "suggest": [
+      "Rebuilding the rail into a single tab stop with arrow keys inside is keyboard behavior. Suggest it. Do not recode key handlers during a visual stage."
+    ]
+  }
+}

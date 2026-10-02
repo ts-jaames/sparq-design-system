@@ -1,0 +1,276 @@
+{
+  "name": "sparq",
+  "source": "tokens/tokens.json",
+  "variables": {
+    "--sparq-ground": {
+      "value": "#1A1A1A",
+      "type": "color",
+      "group": "color",
+      "description": "Near-black app ground. Never pure black, never a warm brown shell."
+    },
+    "--sparq-ink": {
+      "value": "#EDEAE4",
+      "type": "color",
+      "group": "color",
+      "description": "Primary text. Warmth lives here, not in the background."
+    },
+    "--sparq-ink-soft": {
+      "value": "#C4BEB4",
+      "type": "color",
+      "group": "color",
+      "description": "Secondary prose."
+    },
+    "--sparq-ink-muted": {
+      "value": "#A8A39A",
+      "type": "color",
+      "group": "color",
+      "description": "Labels and metadata."
+    },
+    "--sparq-ink-faint": {
+      "value": "#949089",
+      "type": "color",
+      "group": "color",
+      "description": "Floor for any text, including small mono labels."
+    },
+    "--sparq-rule": {
+      "value": "rgba(237, 234, 228, 0.12)",
+      "type": "color",
+      "group": "color",
+      "description": "Default hairline."
+    },
+    "--sparq-rule-strong": {
+      "value": "rgba(237, 234, 228, 0.22)",
+      "type": "color",
+      "group": "color",
+      "description": "Hairline that must read. Still a hairline, not a border treatment."
+    },
+    "--sparq-accent": {
+      "value": "#E75437",
+      "type": "color",
+      "group": "color",
+      "description": "The only accent. Marks the one thing to look at."
+    },
+    "--sparq-accent-deep": {
+      "value": "#F07A62",
+      "type": "color",
+      "group": "color",
+      "description": "Accent used for a word that must stay on the ground."
+    },
+    "--sparq-accent-soft": {
+      "value": "rgba(231, 84, 55, 0.18)",
+      "type": "color",
+      "group": "color",
+      "description": "Accent wash. Not a filled button."
+    },
+    "--sparq-accent-wash": {
+      "value": "rgba(231, 84, 55, 0.10)",
+      "type": "color",
+      "group": "color",
+      "description": "Quieter accent wash."
+    },
+    "--sparq-s1": {
+      "value": "8px",
+      "type": "dimension",
+      "group": "space",
+      "description": null
+    },
+    "--sparq-s2": {
+      "value": "16px",
+      "type": "dimension",
+      "group": "space",
+      "description": null
+    },
+    "--sparq-s3": {
+      "value": "24px",
+      "type": "dimension",
+      "group": "space",
+      "description": null
+    },
+    "--sparq-s4": {
+      "value": "32px",
+      "type": "dimension",
+      "group": "space",
+      "description": null
+    },
+    "--sparq-s5": {
+      "value": "40px",
+      "type": "dimension",
+      "group": "space",
+      "description": null
+    },
+    "--sparq-s6": {
+      "value": "48px",
+      "type": "dimension",
+      "group": "space",
+      "description": null
+    },
+    "--sparq-s8": {
+      "value": "64px",
+      "type": "dimension",
+      "group": "space",
+      "description": null
+    },
+    "--sparq-s10": {
+      "value": "80px",
+      "type": "dimension",
+      "group": "space",
+      "description": null
+    },
+    "--sparq-font-sans": {
+      "value": "\"IBM Plex Sans\", system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Helvetica, Arial, sans-serif",
+      "type": "fontFamily",
+      "group": "font",
+      "description": "Prose, questions, titles."
+    },
+    "--sparq-font-mono": {
+      "value": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, Consolas, monospace",
+      "type": "fontFamily",
+      "group": "font",
+      "description": "Labels, states, stamps, ranges, counts."
+    },
+    "--sparq-track-label": {
+      "value": "0.08em",
+      "type": "dimension",
+      "group": "typography",
+      "description": "Tracking for the mono label voice only."
+    },
+    "--sparq-measure": {
+      "value": "62ch",
+      "type": "dimension",
+      "group": "typography",
+      "description": "Maximum prose measure."
+    },
+    "--sparq-title-tracking": {
+      "value": "-0.015em",
+      "type": "dimension",
+      "group": "typography",
+      "description": null
+    },
+    "--sparq-focus-width": {
+      "value": "2px",
+      "type": "dimension",
+      "group": "typography",
+      "description": null
+    },
+    "--sparq-focus-offset": {
+      "value": "3px",
+      "type": "dimension",
+      "group": "typography",
+      "description": null
+    },
+    "--sparq-hit-min": {
+      "value": "24px",
+      "type": "dimension",
+      "group": "typography",
+      "description": "WCAG 2.2 target size minimum."
+    },
+    "--sparq-ease": {
+      "value": "cubic-bezier(0.22, 0.61, 0.36, 1)",
+      "type": "cubicBezier",
+      "group": "motion",
+      "description": null
+    },
+    "--sparq-dur": {
+      "value": "280ms",
+      "type": "duration",
+      "group": "motion",
+      "description": null
+    }
+  },
+  "contrast": [
+    {
+      "id": "ink-on-ground",
+      "foreground": "#EDEAE4",
+      "background": "#1A1A1A",
+      "ratio": 14.5,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": null
+    },
+    {
+      "id": "ink-soft-on-ground",
+      "foreground": "#C4BEB4",
+      "background": "#1A1A1A",
+      "ratio": 9.42,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": null
+    },
+    {
+      "id": "ink-muted-on-ground",
+      "foreground": "#A8A39A",
+      "background": "#1A1A1A",
+      "ratio": 6.94,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": null
+    },
+    {
+      "id": "ink-faint-on-ground",
+      "foreground": "#949089",
+      "background": "#1A1A1A",
+      "ratio": 5.48,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": null
+    },
+    {
+      "id": "accent-on-ground",
+      "foreground": "#E75437",
+      "background": "#1A1A1A",
+      "ratio": 4.74,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": null
+    },
+    {
+      "id": "accent-deep-on-ground",
+      "foreground": "#F07A62",
+      "background": "#1A1A1A",
+      "ratio": 6.35,
+      "minRatio": 4.5,
+      "allowed": true,
+      "role": "text",
+      "note": null
+    },
+    {
+      "id": "accent-hairline-on-ground",
+      "foreground": "#E75437",
+      "background": "#1A1A1A",
+      "ratio": 4.74,
+      "minRatio": 3,
+      "allowed": true,
+      "role": "non-text",
+      "note": null
+    },
+    {
+      "id": "accent-on-ink",
+      "foreground": "#E75437",
+      "background": "#EDEAE4",
+      "ratio": 3.06,
+      "minRatio": 4.5,
+      "allowed": false,
+      "role": "text",
+      "note": "Disallowed. Accent text sits on the ground, not on the off-white ink."
+    }
+  ],
+  "markers": {
+    "gap": "⚑︎",
+    "warning": "⚠︎"
+  },
+  "classes": [
+    "sparq-rule",
+    "sparq-label",
+    "sparq-prose",
+    "sparq-figure",
+    "sparq-mark",
+    "sparq-hit",
+    "sparq-focus",
+    "sparq-arrive"
+  ]
+}

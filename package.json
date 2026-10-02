@@ -1,0 +1,10 @@
+{
+  "name": "sparq-design-system",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:tokens": "node scripts/build-tokens.mjs",
+    "build": "npm run build:tokens && npm run build --prefix mcp-server",
+    "test": "npm run build:tokens && npm test --prefix mcp-server"
+  }
+}

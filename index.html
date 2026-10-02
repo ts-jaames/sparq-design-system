@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SDS — Sparq Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&family=IBM+Plex+Sans:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="tokens/sparq-tokens.css" />
+    <style>
+      body {
+        margin: 0;
+        background: var(--sparq-ground);
+        color: var(--sparq-ink);
+        font-family: var(--sparq-font-sans);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .skip {
+        position: absolute;
+        left: var(--sparq-s1);
+        top: var(--sparq-s1);
+        transform: translateY(-120%);
+        background: var(--sparq-ground);
+        color: var(--sparq-ink);
+        padding: var(--sparq-s1);
+      }
+
+      .skip:focus {
+        transform: none;
+      }
+
+      main {
+        max-width: var(--sparq-measure);
+        padding: calc(var(--sparq-s10) + var(--sparq-s1)) var(--sparq-s4) var(--sparq-s8);
+      }
+
+      .title {
+        display: flex;
+        align-items: baseline;
+        gap: var(--sparq-s2);
+        margin: 0 0 var(--sparq-s4);
+      }
+
+      h1 {
+        margin: 0;
+        font-weight: 400;
+        letter-spacing: var(--sparq-title-tracking);
+        font-size: 40px;
+        line-height: 1.15;
+      }
+
+      .title .version {
+        margin: 0;
+      }
+
+      p {
+        margin: 0 0 var(--sparq-s3);
+      }
+
+      .sparq-label,
+      .sparq-figure {
+        font-weight: 300;
+      }
+
+      .version {
+        color: var(--sparq-accent);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .github {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      .github .word {
+        text-decoration: underline;
+        text-decoration-color: var(--sparq-rule-strong);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 5px;
+        transition: text-decoration-color var(--sparq-dur) var(--sparq-ease);
+      }
+
+      .github:hover .word,
+      .github:focus-visible .word {
+        text-decoration-color: var(--sparq-accent);
+      }
+
+      .changelog {
+        margin-top: var(--sparq-s10);
+      }
+
+      .changelog h2 {
+        margin: 0 0 var(--sparq-s2);
+      }
+
+      .changelog ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .changelog li {
+        display: flex;
+        gap: var(--sparq-s2);
+        align-items: baseline;
+        padding: var(--sparq-s1) 0 var(--sparq-s2);
+        border-bottom: 1px solid var(--sparq-rule);
+      }
+
+      .when {
+        color: var(--sparq-ink-faint);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip sparq-focus" href="#content">Skip to content</a>
+    <main id="content">
+      <div class="title">
+        <h1 class="sparq-prose">Sparq Design System</h1>
+        <p class="sparq-figure version"><span class="sr-only">Version </span>0.1.0</p>
+      </div>
+      <p class="sparq-prose">
+        A shared spec for how Sparq apps look and how agents apply it. One register. Not a component library.
+      </p>
+      <p class="sparq-prose">
+        Link the CSS. Point an agent at the MCP server. On an existing app, take one visual stage at a time. A stage does not change how the app works.
+      </p>
+      <a class="github sparq-prose sparq-hit sparq-focus" href="https://github.com/ts-jaames/sparq-design-system"><span class="word">GitHub</span></a>
+      <section class="changelog" aria-labelledby="changelog-title">
+        <h2 id="changelog-title" class="sparq-label">Changelog</h2>
+        <ol>
+          <li>
+            <span class="sparq-label when">2 Oct 2026</span>
+            <span class="sparq-prose">Initial spec</span>
+          </li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>
