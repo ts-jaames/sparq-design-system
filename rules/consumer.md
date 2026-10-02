@@ -12,6 +12,18 @@ You are an AI coding assistant in a consumer app. Sparq is the visual and access
 - Status is a word, a hairline, or an orb. Text markers for gap and warning use U+FE0E (`⚑︎`, `⚠︎`). No emoji and no icon-library status.
 - Orbs sit beside a word, `aria-hidden`, and only mean AI movement.
 
+## App shell and rhythm
+
+- No top bar. The page title appears once, as the page's `h1`, in the Sparq title treatment: regular weight with `--sparq-title-tracking`.
+- Navigation sits on the ground. No box, border, or fill around it. Nav items are text only, with no icons.
+- Mono is always uppercase. Use it only for labels (`.sparq-label`) and figures (`.sparq-figure`). Anything that reads as a sentence or a name uses Plex Sans.
+- Section titles inside a page use `.sparq-label`. They read as footnotes, not headings. Keep the heading element so the outline does not change.
+- Hairline or space:
+  - Space separates sections: `--sparq-s6` to `--sparq-s8`.
+  - A hairline separates repeated items of the same kind, such as list rows, table rows, and log entries.
+  - A hairline always has at least `--sparq-s2` of space on each side.
+- Hover and selected: text moves to `--sparq-ink`. Any fill uses `--sparq-raise`, never a tinted or brown surface. Selected also takes `.sparq-mark`, so state is never color alone.
+
 ## Stylesheet
 
 Link the stylesheet from the URL returned by `sparq_get_tokens` (`cssUrl`). Do not copy the file into the app. The URL is pinned to a minor version, so fixes arrive on their own and a new minor version is a deliberate change.
