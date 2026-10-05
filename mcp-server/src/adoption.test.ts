@@ -7,8 +7,11 @@ describe("adoption", () => {
   it("writes a checklist for an existing app and does not prescribe a reskin", () => {
     const plan = planAdoption("existing", "Gap action still submits empty text.");
     assert.match(plan, /SPARQ adoption|Sparq adoption/);
-    assert.match(plan, /connect/);
-    assert.match(plan, /ai-movement/);
+    assert.match(plan, /`connect`/);
+    assert.match(plan, /`foundation`/);
+    assert.match(plan, /`surfaces`/);
+    assert.match(plan, /Surface batches/);
+    assert.match(plan, /sparq_check_diff/);
     assert.match(plan, /Do not change operational code/);
     assert.match(plan, /empty text/);
     assert.match(plan, /Suggest, do not code/);
@@ -19,13 +22,24 @@ describe("adoption", () => {
     assert.match(plan, /No SPARQ_ADOPTION.md/);
   });
 
-  it("returns one stage and marks behavior as do-not-code", () => {
-    const change = nextChange("focus", "src/App.vue");
-    assert.equal(change.stage, "focus");
+  it("returns one surfaces batch with a file limit and the gate", () => {
+    const change = nextChange("surfaces", ["src/App.vue"], "Interview");
+    assert.equal(change.stage, "surfaces");
     assert.equal(change.doNotCode, true);
-    assert.equal(change.file, "src/App.vue");
+    assert.deepEqual(change.files, ["src/App.vue"]);
+    assert.equal(change.batch, "Interview");
+    assert.equal(change.maxFiles, 15);
     assert.match(change.suggest.join(" "), /tab order/i);
-    assert.match(change.stop, /Do not start the next stage/);
+    assert.match(change.gate.join(" "), /sparq_check_diff/);
+    assert.match(change.stop, /Do not start the next pass/);
+  });
+
+  it("maps an older stage id to its pass", () => {
+    const change = nextChange("ground-ink");
+    assert.equal(change.stage, "foundation");
+    assert.equal(change.maxFiles, null);
+    assert.match(change.note ?? "", /now part of "foundation"/);
+    assert.throws(() => nextChange("nope"), /Unknown stage/);
   });
 });
 

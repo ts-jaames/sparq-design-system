@@ -4,6 +4,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { nextChange, planAdoption } from "./adoption.js";
 import { formatAudit } from "./audit.js";
+import { checkDiff } from "./diff.js";
 import { readJson, readText } from "./load.js";
 import {
   listComponents,
@@ -193,17 +194,40 @@ server.registerTool(
   "sparq_next_change",
   {
     description:
-      "Return one presentational stage. Behavioral gaps are marked do-not-code. Does not edit operational code.",
+      "Return one presentational pass: connect, foundation, or one surfaces batch. Includes the gate to pass before stopping. Behavioral gaps are marked do-not-code. Does not edit operational code.",
     inputSchema: {
       stage: z
         .string()
         .describe(
-          "connect, ground-ink, type, seams, accent, focus, or ai-movement",
+          "connect, foundation, or surfaces. Older ids (ground-ink, type, seams, accent, focus, ai-movement) map to their pass.",
         ),
-      fileName: z.string().optional(),
+      files: z
+        .array(z.string())
+        .optional()
+        .describe("Files in this pass or batch."),
+      batch: z
+        .string()
+        .optional()
+        .describe("Batch name from SPARQ_ADOPTION.md, such as a route or feature area."),
+      fileName: z.string().optional().describe("Single file. Prefer files."),
     },
   },
-  async ({ stage, fileName }) => text(nextChange(stage, fileName)),
+  async ({ stage, files, batch, fileName }) =>
+    text(nextChange(stage, files ?? (fileName ? [fileName] : undefined), batch)),
+);
+
+server.registerTool(
+  "sparq_check_diff",
+  {
+    description:
+      "Check a unified diff from an adoption pass. Lists hunks that touch handlers, state, effects, requests, validation, routing, imports, or locked files under revert, and unrecognised lines under review. Enforces the surfaces batch file limit. Reads the text it is given and does not change the app.",
+    inputSchema: {
+      diff: z.string().describe("Output of git diff for the pass, including new files."),
+      stage: z.string().optional().describe("connect, foundation, or surfaces."),
+      maxFiles: z.number().int().positive().optional(),
+    },
+  },
+  async ({ diff, stage, maxFiles }) => text(checkDiff(diff, stage, maxFiles)),
 );
 
 async function main() {

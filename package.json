@@ -1,6 +1,6 @@
 {
   "name": "sparq-design-system",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Sparq Design System: tokens, blueprints, accessibility floor, and an MCP server for agents.",
   "type": "module",
   "license": "MIT",

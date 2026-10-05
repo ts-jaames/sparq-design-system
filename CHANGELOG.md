@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 — 5 Oct 2026
+
+Fewer, broader adoption stops, each gated by a diff check. Apps move from `0.2` to `0.3` on purpose.
+
+- Adoption runs in three passes instead of seven stages per surface: connect and plan, an app-wide foundation in the theme layer, and surface batches of related screens. Each pass ends at a human stop.
+- `sparq_check_diff` gates every stop. It reads the pass's diff and lists hunks that touch handlers, hooks, requests, routing, form attributes, imports, or locked files to revert, and unrecognised lines to review. A surfaces batch stops at 15 changed files.
+- `sparq_next_change` takes `files` and `batch`. The older stage ids map to their pass.
+
 ## 0.2.0 — 5 Oct 2026
 
 Shell, rhythm, and a filled primary. Apps move from `0.1` to `0.2` on purpose.

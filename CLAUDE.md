@@ -16,7 +16,7 @@ Near-black ground, warm ink, one accent, hairlines, IBM Plex Sans for prose and 
 
 ## Adoption
 
-`adoption/stages.json` is one visual stage at a time. A stage may change color, type, borders, spacing, and focus styling. It does not change handlers, state, effects, requests, validation, routing, or what a click submits.
+`adoption/stages.json` is three passes: connect and plan, an app-wide foundation in the theme layer, and surface batches. Each pass ends at a human stop after `sparq_check_diff` passes. A pass may change color, type, borders, spacing, and focus styling. It does not change handlers, state, effects, requests, validation, routing, or what a click submits.
 
 ## Accessibility
 

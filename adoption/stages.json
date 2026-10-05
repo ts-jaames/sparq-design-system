@@ -1,5 +1,5 @@
 {
-  "rule": "One stage, one surface, one turn, presentation only.",
+  "rule": "Three passes, presentation only. Each pass ends at a human stop, after sparq_check_diff passes.",
   "doesNotChange": [
     "event handlers",
     "state",
@@ -9,75 +9,63 @@
     "routing",
     "what a click submits"
   ],
+  "maxFilesPerBatch": 15,
+  "gate": [
+    "Pass the working-tree diff (git diff, plus new files) to sparq_check_diff.",
+    "Revert every hunk it lists under revert, and record the intent as a suggestion in SPARQ_ADOPTION.md.",
+    "Justify or revert every line it lists under review.",
+    "Run the app's typecheck, tests, and build if the app has them. A failure stops the pass early.",
+    "Report the changed files, the reverted hunks, and the suggestions added. Then stop."
+  ],
   "stages": [
     {
       "id": "connect",
-      "title": "Connect",
+      "title": "Connect and plan",
+      "scope": "app",
+      "replaces": [],
       "apply": [
-        "Link cssUrl and fontsUrl from sparq_get_tokens. Do not copy the stylesheet into the app.",
-        "Add the Sparq MCP server and copy templates/consumer/AGENTS.md to the app root.",
+        "Link cssUrl and fontsUrl from sparq_get_tokens once, in the document head or root layout. Do not copy the stylesheet into the app.",
+        "If not already done, add the Sparq MCP server and copy templates/consumer/AGENTS.md to the app root.",
+        "Write SPARQ_ADOPTION.md from sparq_plan_adoption, including the surface batches.",
         "Do not point existing styles at the new variables yet."
       ],
       "suggest": [
-        "Confirm the screenshot matches the app from before the link. If it does not, the stylesheet is doing more than declaring variables."
-      ]
-    },
-    {
-      "id": "ground-ink",
-      "title": "Ground and ink",
-      "apply": [
-        "On the named files, set background and text colors to Sparq variables.",
-        "Leave cards, radii, buttons, and copy as they are."
+        "Confirm the app looks the same as before the link. If it does not, the stylesheet is doing more than declaring variables."
       ],
-      "suggest": []
+      "stop": "Stop after the plan is written. The app should look unchanged."
     },
     {
-      "id": "type",
-      "title": "Type",
+      "id": "foundation",
+      "title": "Foundation",
+      "scope": "theme layer, whole app",
+      "replaces": ["ground-ink", "type"],
       "apply": [
-        "Swap font families to the Sparq sans and mono stacks.",
-        "Leave layout alone."
+        "In the theme layer only, map background and text colors to Sparq variables. The theme layer is global CSS, root custom properties, or the theme config, such as a Tailwind theme or a CSS-in-JS theme object.",
+        "In the same layer, swap font families to the Sparq sans and mono stacks.",
+        "Do not edit component files in this pass. List colors and fonts hardcoded in components under their surface batch in SPARQ_ADOPTION.md.",
+        "Leave cards, radii, buttons, spacing, and copy as they are."
       ],
-      "suggest": []
+      "suggest": [],
+      "stop": "Stop after the gate passes. Every screen changes at once, so check a few screens."
     },
     {
-      "id": "seams",
-      "title": "Seams",
+      "id": "surfaces",
+      "title": "Surfaces",
+      "scope": "one batch of related screens",
+      "replaces": ["seams", "accent", "focus", "ai-movement"],
       "apply": [
-        "On the one named surface, replace a card border with a 1px hairline.",
-        "Keep the same elements. Leave sibling screens alone."
-      ],
-      "suggest": []
-    },
-    {
-      "id": "accent",
-      "title": "Accent",
-      "apply": [
-        "On that same surface, the view's one primary action uses the filled primary: --sparq-accent-deep fill and --sparq-ground text. Restyle any other filled accent chrome as an accent hairline or text treatment.",
-        "Remove dashed borders.",
-        "The control stays the same control."
-      ],
-      "suggest": []
-    },
-    {
-      "id": "focus",
-      "title": "Focus",
-      "apply": [
-        "Add a visible focus style and a 24px hit area, using padding or min-size, on that surface."
+        "Work on one batch from SPARQ_ADOPTION.md: related screens, such as one route or one feature area. Leave screens outside the batch alone.",
+        "Move the colors and fonts listed for this batch onto Sparq variables.",
+        "Replace card borders, card fills, and elevation shadows with 1px hairlines or space, following the hairline-or-space rule. Keep the same elements.",
+        "The view's one primary action uses the filled primary: --sparq-accent-deep fill and --sparq-ground text. Restyle other filled accent chrome as an accent hairline or text. Remove dashed borders. Each control stays the same control.",
+        "Add a visible focus style and a 24px hit area, using padding or min-size.",
+        "If a status word is already rendered, place a presentational orb beside it with data-orb, hidden from assistive tech."
       ],
       "suggest": [
-        "Rebuilding tab order, roving tabindex, or live regions is behavior. Do not code it in this stage."
-      ]
-    },
-    {
-      "id": "ai-movement",
-      "title": "AI movement",
-      "apply": [
-        "If a status word is already rendered, place a presentational orb beside it and hide the canvas from assistive tech."
+        "Rebuilding tab order, roving tabindex, or live regions is behavior. Do not code it in this pass.",
+        "Do not invent a status, bind an orb to new state, or change when work starts and stops."
       ],
-      "suggest": [
-        "Do not invent a status, bind the orb to new state, or change when work starts and stops."
-      ]
+      "stop": "Stop after the gate passes for this batch. Do not start the next batch."
     }
   ]
 }

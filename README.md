@@ -15,7 +15,7 @@ Nothing to clone. Add the server to the app's `.cursor/mcp.json` (Cursor) or `.m
   "mcpServers": {
     "sparq-design-system": {
       "command": "npx",
-      "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.2.0"]
+      "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.3.0"]
     }
   }
 }
@@ -29,39 +29,35 @@ Link the stylesheet and fonts. Do not copy the CSS file into the app.
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500;600&family=IBM+Plex+Sans:wght@400;600&display=swap" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ts-jaames/sparq-design-system@0.2/tokens/sparq-tokens.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ts-jaames/sparq-design-system@0.3/tokens/sparq-tokens.css" />
 ```
 
-Opening prompts for a new app, an existing app, and a single stage are in [`templates/consumer/PROMPTS.md`](templates/consumer/PROMPTS.md).
+Opening prompts for a new app, an existing app, and each pass are in [`templates/consumer/PROMPTS.md`](templates/consumer/PROMPTS.md).
 
 ## Updates
 
-Both the server and the stylesheet are pinned to a minor version, `0.2`.
+Both the server and the stylesheet are pinned to a minor version, `0.3`.
 
-- A patch release, such as `0.2.1`, reaches every app on its own. The stylesheet URL resolves to the newest `0.2.x` tag. The server picks it up when the npx cache refreshes; run `npx clear-npx-cache` or remove `~/.npm/_npx` to force it.
-- A minor release, such as `0.3.0`, can restyle apps that use the changed tokens. Apps move to it on purpose, by changing `0.2` to `0.3` in both places.
+- A patch release, such as `0.3.1`, reaches every app on its own. The stylesheet URL resolves to the newest `0.3.x` tag. The server picks it up when the npx cache refreshes; run `npx clear-npx-cache` or remove `~/.npm/_npx` to force it.
+- A minor release, such as `0.4.0`, can restyle apps that use the changed tokens. Apps move to it on purpose, by changing `0.3` to `0.4` in both places.
 
 `sparq_get_version` returns the current version, the pinned URLs, and the changelog, so an agent can say when an app is behind. See [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Existing app
 
-The first session writes `SPARQ_ADOPTION.md` and stops. The app should look the same after the stylesheet is linked.
+Adoption runs in three passes, each ending at a human stop:
 
-Later, one stage runs on one named surface:
+1. **Connect and plan.** Link the stylesheet and write `SPARQ_ADOPTION.md`, with the screens grouped into surface batches. The app should look the same.
+2. **Foundation.** Colors and fonts move to Sparq variables in the theme layer, across the whole app at once.
+3. **Surfaces.** One batch of related screens per request, at most 15 changed files. Hairlines, the accent, focus and hit areas, and orbs.
 
-1. Connect
-2. Ground and ink
-3. Type
-4. Seams
-5. Accent
-6. Focus
-7. AI movement
+A pass may change color, type, borders, spacing, and focus styling. It does not change handlers, state, effects, requests, validation, routing, or what a click submits. If a pattern wants a different state, that is written as a suggestion and left uncoded.
 
-A stage may change color, type, borders, spacing, and focus styling. It may name a control the way the control already works. It does not change handlers, state, effects, requests, validation, routing, or what a click submits. If a pattern wants a different state, that is written as a suggestion and left uncoded.
+Before each stop, the agent passes the gate. `sparq_check_diff` reads the pass's `git diff` and lists hunks that touch handlers, hooks, requests, routing, form attributes, imports, or locked files such as `package.json` and `api/`. Those are reverted and recorded as suggestions. Lines it can't recognise as presentation are listed for review. The agent then runs the app's own typecheck, tests, and build.
 
 ## Tools
 
-`sparq_get_rules`, `sparq_get_version`, `sparq_get_tokens`, `sparq_list_components`, `sparq_get_component_spec`, `sparq_get_guardrails`, `sparq_get_a11y`, `sparq_get_orb`, `sparq_audit_snippet`, `sparq_plan_adoption`, `sparq_next_change`.
+`sparq_get_rules`, `sparq_get_version`, `sparq_get_tokens`, `sparq_list_components`, `sparq_get_component_spec`, `sparq_get_guardrails`, `sparq_get_a11y`, `sparq_get_orb`, `sparq_audit_snippet`, `sparq_plan_adoption`, `sparq_next_change`, `sparq_check_diff`.
 
 `sparq_get_component_spec` takes `react`, `vue`, `svelte`, `html`, or `vanilla-css`.
 
@@ -89,7 +85,7 @@ tokens/sparq-tokens.json    generated values, contrast pairs, markers
 blueprints/                 QuestionCard, SectionRail, AutoFix
 guardrails/audiences.json   internal, external, hybrid
 a11y/wcag-2.2.json          accessibility floor for every audience
-adoption/stages.json        one visual stage at a time
+adoption/stages.json        three passes and the gate before each stop
 rules/consumer.md           rules served by sparq_get_rules
 motion/                     vendored thinking-orbs and a vanilla mount
 mcp-server/                 stdio MCP server

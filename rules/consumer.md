@@ -82,18 +82,27 @@ There is no migration file. When asked to build a pattern, call `sparq_get_compo
 
 Linking the CSS does not restyle the app. Do not edit product UI until `SPARQ_ADOPTION.md` exists.
 
-1. Call `sparq_plan_adoption` with `mode: "existing"`.
-2. Write the result to `SPARQ_ADOPTION.md`.
-3. Stop. Do not restyle in that turn.
+Adoption runs in three passes. Each pass ends at a human stop.
 
-Later, when asked for the next stage on a named surface:
+1. **Connect and plan** (`connect`). Link the stylesheet, call `sparq_plan_adoption` with `mode: "existing"`, and write `SPARQ_ADOPTION.md`. Group the screens into surface batches of related screens, each changing at most 15 files. Stop. The app should look unchanged.
+2. **Foundation** (`foundation`). Map colors and fonts to Sparq variables in the theme layer only, across the whole app. Do not edit component files. Stop.
+3. **Surfaces** (`surfaces`), one batch per request. Apply hairlines, the accent, focus and hit areas, and orbs to the screens in that batch. Stop after each batch.
 
-1. Call `sparq_next_change` with that stage id and the file name.
-2. Apply the presentation edits only, on the named files.
+For each pass:
+
+1. Call `sparq_next_change` with the pass id, the batch name, and its files.
+2. Apply the presentation edits only.
 3. If the tool returns a suggestion, append it to the suggestions section. Do not code it.
-4. Check that stage's box. Do not start the next stage.
+4. Before stopping, pass the gate:
+   1. Call `sparq_check_diff` with the pass's `git diff`, including new files, and the pass id.
+   2. Revert every hunk under `revert`, record its intent as a suggestion, and run the check again.
+   3. Justify or revert every line under `review`.
+   4. Run the app's typecheck, tests, and build if it has them.
+5. Report the changed files, the reverted hunks, and the suggestions. Check the pass or batch box. Do not start the next one.
 
-Never change event handlers, state, effects, requests, validation, routing, or what a click submits during a stage. A behavioral gap, such as emitting `isGap` instead of empty text, stays a suggestion until someone asks for that behavior on its own.
+Stop early, before the gate, if a change is ambiguous or a batch grows past its file limit.
+
+Never change event handlers, state, effects, requests, validation, routing, or what a click submits during a pass. A behavioral gap, such as emitting `isGap` instead of empty text, stays a suggestion until someone asks for that behavior on its own.
 
 ## Updates
 
@@ -112,5 +121,6 @@ Call `sparq_get_version` when starting Sparq work. If the stylesheet URL in the 
 - `sparq_audit_snippet`
 - `sparq_plan_adoption`
 - `sparq_next_change`
+- `sparq_check_diff`
 
 Call `sparq_get_guardrails` with `internal`, `external`, or `hybrid` before writing copy on a shared surface. External views hide raw model errors and internal vocabulary. Hybrid shows diagnostics only when the person is authenticated.
