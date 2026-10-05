@@ -32,6 +32,7 @@
     "build:tokens": "node scripts/build-tokens.mjs",
     "build:server": "tsc -p mcp-server",
     "build": "npm run build:tokens && npm run build:server",
+    "build:site": "npm run build:tokens && rm -rf public && mkdir -p public/tokens && cp index.html public/ && cp tokens/sparq-tokens.css public/tokens/",
     "prepare": "tsc -p mcp-server",
     "test": "npm run build && node --test \"mcp-server/dist/**/*.test.js\""
   },

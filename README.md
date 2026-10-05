@@ -94,7 +94,7 @@ index.html                  SDS landing
 CHANGELOG.md                release notes
 ```
 
-To preview the landing page, run `python3 -m http.server 8080` from the repo root and open `http://127.0.0.1:8080/`.
+To preview the landing page, run `python3 -m http.server 8080` from the repo root and open `http://127.0.0.1:8080/`. On Vercel, `vercel.json` runs `npm run build:site`, which copies the page and stylesheet into `public/`.
 
 ## Release
 
