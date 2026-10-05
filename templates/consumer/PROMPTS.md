@@ -7,7 +7,7 @@ This app uses the Sparq design system. Add an MCP server named `sparq-design-sys
 ```json
 {
   "command": "npx",
-  "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.1.0"]
+  "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.2.0"]
 }
 ```
 

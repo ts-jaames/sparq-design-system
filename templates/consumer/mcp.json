@@ -2,7 +2,7 @@
   "mcpServers": {
     "sparq-design-system": {
       "command": "npx",
-      "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.1.0"]
+      "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.2.0"]
     }
   }
 }

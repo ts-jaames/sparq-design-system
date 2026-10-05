@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 — 5 Oct 2026
+
+Shell, rhythm, and a filled primary. Apps move from `0.1` to `0.2` on purpose.
 
 - Token `--sparq-raise`: a neutral lift off the ground for hover and selected states.
 - Rules for the app shell and rhythm: no top bar, open text-only navigation, mono only in uppercase, section titles as labels, when to use a hairline and when to use space, and hover and selected states.

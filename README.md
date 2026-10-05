@@ -15,7 +15,7 @@ Nothing to clone. Add the server to the app's `.cursor/mcp.json` (Cursor) or `.m
   "mcpServers": {
     "sparq-design-system": {
       "command": "npx",
-      "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.1.0"]
+      "args": ["-y", "github:ts-jaames/sparq-design-system#semver:^0.2.0"]
     }
   }
 }
@@ -29,17 +29,17 @@ Link the stylesheet and fonts. Do not copy the CSS file into the app.
 
 ```html
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500;600&family=IBM+Plex+Sans:wght@400;600&display=swap" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ts-jaames/sparq-design-system@0.1/tokens/sparq-tokens.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ts-jaames/sparq-design-system@0.2/tokens/sparq-tokens.css" />
 ```
 
 Opening prompts for a new app, an existing app, and a single stage are in [`templates/consumer/PROMPTS.md`](templates/consumer/PROMPTS.md).
 
 ## Updates
 
-Both the server and the stylesheet are pinned to a minor version, `0.1`.
+Both the server and the stylesheet are pinned to a minor version, `0.2`.
 
-- A patch release, such as `0.1.1`, reaches every app on its own. The stylesheet URL resolves to the newest `0.1.x` tag. The server picks it up when the npx cache refreshes; run `npx clear-npx-cache` or remove `~/.npm/_npx` to force it.
-- A minor release, such as `0.2.0`, can restyle apps that use the changed tokens. Apps move to it on purpose, by changing `0.1` to `0.2` in both places.
+- A patch release, such as `0.2.1`, reaches every app on its own. The stylesheet URL resolves to the newest `0.2.x` tag. The server picks it up when the npx cache refreshes; run `npx clear-npx-cache` or remove `~/.npm/_npx` to force it.
+- A minor release, such as `0.3.0`, can restyle apps that use the changed tokens. Apps move to it on purpose, by changing `0.2` to `0.3` in both places.
 
 `sparq_get_version` returns the current version, the pinned URLs, and the changelog, so an agent can say when an app is behind. See [`CHANGELOG.md`](CHANGELOG.md).
 
