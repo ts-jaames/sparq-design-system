@@ -3,15 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SDS — Sparq Design System</title>
+    <title>GRAIN — Sparq</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&family=IBM+Plex+Sans:wght@400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400&family=Geist:wght@400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="tokens/sparq-tokens.css" />
     <style>
+      :root {
+        --sparq-font-sans: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        --sparq-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      }
+
       body {
         margin: 0;
         background: var(--sparq-ground);
@@ -95,6 +100,49 @@
         text-decoration-color: var(--sparq-accent);
       }
 
+      .define {
+        margin: 0 0 var(--sparq-s4);
+      }
+
+      .define .pos {
+        color: var(--sparq-ink-faint);
+        margin-right: var(--sparq-s1);
+      }
+
+      .layers {
+        list-style: none;
+        margin: var(--sparq-s8) 0 var(--sparq-s6);
+        padding: 0;
+        border-top: 1px solid var(--sparq-rule);
+      }
+
+      .layers li {
+        display: grid;
+        grid-template-columns: 2.5em 9em 1fr;
+        gap: var(--sparq-s2);
+        align-items: baseline;
+        padding: var(--sparq-s2) 0;
+        border-bottom: 1px solid var(--sparq-rule);
+      }
+
+      .layers .n {
+        color: var(--sparq-ink-faint);
+      }
+
+      .layers .q {
+        color: var(--sparq-ink-muted, var(--sparq-ink));
+      }
+
+      @media (max-width: 560px) {
+        .layers li {
+          grid-template-columns: 2.5em 1fr;
+        }
+
+        .layers .q {
+          grid-column: 2;
+        }
+      }
+
       .changelog {
         margin-top: var(--sparq-s10);
       }
@@ -119,6 +167,7 @@
 
       .when {
         color: var(--sparq-ink-faint);
+        white-space: nowrap;
       }
 
       .sr-only {
@@ -135,15 +184,26 @@
     <a class="skip sparq-focus" href="#content">Skip to content</a>
     <main id="content">
       <div class="title">
-        <h1 class="sparq-prose">Sparq Design System</h1>
+        <h1 class="sparq-prose">GRAIN</h1>
         <p class="sparq-figure version"><span class="sr-only">Version </span>0.3.0</p>
       </div>
-      <p class="sparq-prose">
-        A shared spec for how Sparq apps look and how agents apply it. One register. Not a component library.
+      <p class="define sparq-prose">
+        <span class="sparq-label pos">n.</span>
+        Sparq's pattern language. How anything built on the capability model looks, behaves, and hands work between people and agents.
       </p>
       <p class="sparq-prose">
-        Link the CSS. Point an agent at the MCP server. On an existing app, adopt it in three passes, each checked before it stops. A pass does not change how the app works.
+        One register for generated interfaces and for the agents behind them. Not a component library.
       </p>
+      <p class="sparq-prose">
+        Point an agent at the MCP server. It reads the rules before it builds, and the harness checks the work before it stops.
+      </p>
+      <ol class="layers" aria-label="The five parts of GRAIN">
+        <li><span class="sparq-label n">01</span><span class="sparq-prose">Guardrails</span><span class="sparq-prose q">What must never happen, whoever builds it.</span></li>
+        <li><span class="sparq-label n">02</span><span class="sparq-prose">Retrieval</span><span class="sparq-prose q">What an agent can fetch, and what it cites.</span></li>
+        <li><span class="sparq-label n">03</span><span class="sparq-prose">Agentic</span><span class="sparq-prose q">What an agent may do without a person.</span></li>
+        <li><span class="sparq-label n">04</span><span class="sparq-prose">Interaction</span><span class="sparq-prose q">How it looks, reads, and responds.</span></li>
+        <li><span class="sparq-label n">05</span><span class="sparq-prose">Norms</span><span class="sparq-prose q">How we decide, version, and deviate.</span></li>
+      </ol>
       <a class="github sparq-prose sparq-hit sparq-focus" href="https://github.com/ts-jaames/sparq-design-system"><span class="word">GitHub</span></a>
       <section class="changelog" aria-labelledby="changelog-title">
         <h2 id="changelog-title" class="sparq-label">Changelog</h2>
