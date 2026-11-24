@@ -59,8 +59,8 @@
         margin: 0;
         font-family: "Badeen Display", var(--sparq-font-sans);
         font-weight: 400;
-        letter-spacing: var(--sparq-title-tracking);
-        font-size: 72px;
+        letter-spacing: 1px;
+        font-size: 102px;
         line-height: 1;
       }
 
@@ -78,7 +78,7 @@
       }
 
       .version {
-        color: var(--sparq-accent);
+        color: var(--sparq-ink-muted);
       }
 
       a {
@@ -111,12 +111,8 @@
 
       .define {
         max-width: none;
+        text-align: center;
         margin: 0 0 var(--sparq-s4);
-      }
-
-      .define .pos {
-        color: var(--sparq-ink-faint);
-        margin-right: var(--sparq-s1);
       }
 
       .layers {
@@ -127,10 +123,7 @@
       }
 
       .layers li {
-        display: grid;
-        grid-template-columns: 7em 1fr;
-        gap: var(--sparq-s2);
-        align-items: baseline;
+        text-align: center;
         padding: var(--sparq-s2) 0;
         border-bottom: 1px solid var(--sparq-rule);
       }
@@ -139,18 +132,6 @@
         max-width: none;
         color: var(--sparq-ink-muted, var(--sparq-ink));
       }
-
-      @media (max-width: 560px) {
-        .layers li {
-          grid-template-columns: 1fr;
-          gap: var(--sparq-s1);
-        }
-      }
-
-
-
-
-
 
       .sr-only {
         position: absolute;
@@ -170,15 +151,14 @@
         <h1 class="sparq-prose">GRAIN</h1>
       </div>
       <p class="define sparq-prose">
-        <span class="sparq-label pos">n.</span>
         Sparq's pattern language. How anything built on the capability model looks, behaves, and hands work between people and agents. One register for generated interfaces and the agents behind them, not a component library. Point an agent at the MCP server: it reads the rules before it builds, and the harness checks the work before it stops.
       </p>
       <ol class="layers" aria-label="The five parts of GRAIN">
-        <li><span class="sparq-prose">Guardrails</span><span class="sparq-prose q">How a limit, a refusal, or an unknown reads to a person.</span></li>
-        <li><span class="sparq-prose">Retrieval</span><span class="sparq-prose q">How sources show up, so people can see where an answer came from.</span></li>
-        <li><span class="sparq-prose">Agentic</span><span class="sparq-prose q">How people and agents work together: asking, handing off, taking back.</span></li>
-        <li><span class="sparq-prose">Interaction</span><span class="sparq-prose q">How it looks, and how people review, edit, and undo what an agent made.</span></li>
-        <li><span class="sparq-prose">Norms</span><span class="sparq-prose q">How it should feel every time: tone, pace, and trust.</span></li>
+        <li><span class="sparq-prose">Guardrails</span> <span class="sparq-prose q">shape how a limit, a refusal, or an unknown reads to a person.</span></li>
+        <li><span class="sparq-prose">Retrieval</span> <span class="sparq-prose q">shows people where an answer came from.</span></li>
+        <li><span class="sparq-prose">Agentic</span> <span class="sparq-prose q">is how people and agents ask, hand off, and take back work.</span></li>
+        <li><span class="sparq-prose">Interaction</span> <span class="sparq-prose q">is how people see, review, edit, and undo what an agent made.</span></li>
+        <li><span class="sparq-prose">Norms</span> <span class="sparq-prose q">set how it should feel every time: tone, pace, and trust.</span></li>
       </ol>
       <a class="github sparq-focus" href="https://github.com/ts-jaames/sparq-design-system" aria-label="GitHub">
         <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
